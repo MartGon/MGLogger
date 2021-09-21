@@ -6,6 +6,7 @@ SET(SOURCES
     Logger.cpp
     FileLogger.cpp
     ConsoleLogger.cpp
+    ComposedLogger.cpp
 )
 
 add_library(Log ${SOURCES})
