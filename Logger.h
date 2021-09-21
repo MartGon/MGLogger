@@ -21,6 +21,7 @@ namespace Log
 
         virtual ~Logger() {};
 
+        Verbosity GetVerbosity() const { return verbosity_;}
         void SetVerbosity(Verbosity verbosity) { this->verbosity_ = verbosity; };
         
         void Log(const std::string& msg);

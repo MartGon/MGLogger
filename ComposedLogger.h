@@ -10,7 +10,7 @@ namespace Log
     class ComposedLogger : public Logger
     {
     public:
-        void AddLogger(std::unique_ptr<Logger> logger) { loggers_.push_back(std::move(logger)); };
+        void AddLogger(std::unique_ptr<Logger> logger) { logger->SetVerbosity(GetVerbosity()); loggers_.push_back(std::move(logger)); };
 
         void SetVerbosity(Verbosity verbosity);
 
