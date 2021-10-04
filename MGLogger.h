@@ -4,3 +4,4 @@
 #include <FileLogger.h>
 #include <ConsoleLogger.h>
 #include <ComposedLogger.h>
+#include <NullLogger.h>
