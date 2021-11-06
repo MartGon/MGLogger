@@ -11,7 +11,8 @@ SET(SOURCES
 )
 
 add_library(Log ${SOURCES})
-target_link_libraries(Log 
+target_link_libraries(Log
+    Threads::Threads 
 )
 target_include_directories(Log PUBLIC include 
     ${CMAKE_CURRENT_SOURCE_DIR} 

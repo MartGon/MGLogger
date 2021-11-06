@@ -16,12 +16,23 @@ bool FileLogger::IsOk() const
 
 void FileLogger::DoLog(const std::string& msg)
 {
+    fMutex.lock();
     if (IsOk())
         logFile << msg << "\n";
+    fMutex.unlock();
 }
 
 void FileLogger::DoFlush()
 {
-    logFile.close();
-    logFile.open(path, std::ios::app);
+    if(fThread.joinable())
+        fThread.join();
+
+    fThread = std::thread([this]()
+    {
+        this->fMutex.lock();
+
+        logFile.flush();
+
+        this->fMutex.unlock();
+    });
 }

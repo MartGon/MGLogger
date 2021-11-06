@@ -4,6 +4,8 @@
 
 #include <fstream>
 #include <filesystem>
+#include <thread>
+#include <mutex>
 
 namespace Log
 {
@@ -19,5 +21,7 @@ namespace Log
 
         std::ofstream logFile;
         std::filesystem::path path;
+        std::thread fThread;
+        std::mutex fMutex;
     };
 }
