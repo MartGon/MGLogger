@@ -28,11 +28,14 @@ namespace Log
         void Log(const std::string& msg, Verbosity level);
         void Flush();
 
-        void LogDebug(const std::string& msg) { Log(msg, Verbosity::DEBUG); }
-        void LogInfo(const std::string& msg) { Log(msg, Verbosity::INFO); };
-        void LogWarning(const std::string& msg) { Log(msg, Verbosity::WARNING); };
-        void LogError(const std::string& msg) { Log(msg, Verbosity::ERROR); };
-        void LogCritical(const std::string& msg) { Log(msg, Verbosity::CRITICAL); };
+        inline void Enable() { active = true; }
+        inline void Disable() { active = false; }
+
+        inline void LogDebug(const std::string& msg) { Log(msg, Verbosity::DEBUG); }
+        inline void LogInfo(const std::string& msg) { Log(msg, Verbosity::INFO); };
+        inline void LogWarning(const std::string& msg) { Log(msg, Verbosity::WARNING); };
+        inline void LogError(const std::string& msg) { Log(msg, Verbosity::ERROR); };
+        inline void LogCritical(const std::string& msg) { Log(msg, Verbosity::CRITICAL); };
 
     private:
 
@@ -47,5 +50,6 @@ namespace Log
         std::string formatStr_ = "[%d]%t: %m";
         Verbosity verbosity_ = Verbosity::ERROR;
         static const std::unordered_map<Verbosity, std::string> typeString;
+        bool active = true;
     };
 }

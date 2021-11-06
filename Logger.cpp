@@ -13,12 +13,13 @@ const std::unordered_map<Verbosity, std::string> Logger::typeString =
 
 void Logger::Log(const std::string& msg)
 {
-    DoLog(msg);
+    if(active)
+        DoLog(msg);
 }
 
 void Logger::Log(const std::string& msg, Verbosity level)
 {
-    if (level >= verbosity_)
+    if (active && level >= verbosity_)
     {
         auto formattedMsg = FormatMsg(msg, level);
         DoLog(formattedMsg);
