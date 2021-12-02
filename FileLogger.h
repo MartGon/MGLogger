@@ -12,6 +12,7 @@ namespace Log
     class FileLogger : public Logger
     {
     public:
+        ~FileLogger();
         void OpenLogFile(const std::filesystem::path& path);
         bool IsOk() const;
 

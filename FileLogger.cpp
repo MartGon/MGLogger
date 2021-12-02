@@ -2,6 +2,12 @@
 
 using namespace Log;
 
+FileLogger::~FileLogger()
+{
+    if(fThread.joinable())
+        fThread.join();
+}
+
 void FileLogger::OpenLogFile(const std::filesystem::path& path)
 {
     logFile.open(path, std::ios::trunc);
