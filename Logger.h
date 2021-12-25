@@ -31,6 +31,7 @@ namespace Log
         inline void Enable() { active = true; }
         inline void Disable() { active = false; }
 
+        // TODO: Update to accept format strings
         inline void LogDebug(const std::string& msg) { Log(msg, Verbosity::DEBUG); }
         inline void LogInfo(const std::string& msg) { Log(msg, Verbosity::INFO); };
         inline void LogWarning(const std::string& msg) { Log(msg, Verbosity::WARNING); };
