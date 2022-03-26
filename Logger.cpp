@@ -8,7 +8,7 @@ using namespace Log;
 const std::unordered_map<Verbosity, std::string> Logger::typeString = 
 { 
     {Verbosity::DEBUG, "DEBUG"}, {Verbosity::INFO, "INFO"}, {Verbosity::WARNING, "WARNING"},
-    {Verbosity::ERROR, "ERROR"}, {Verbosity::CRITICAL, "CRITICAL"}
+    {Verbosity::VERBOSITY_ERROR, "ERROR"}, {Verbosity::CRITICAL, "CRITICAL"}
 };
 
 void Logger::Log(const std::string& msg)

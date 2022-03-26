@@ -11,7 +11,7 @@ namespace Log
         DEBUG,
         INFO,
         WARNING,
-        ERROR,
+        VERBOSITY_ERROR,
         CRITICAL
     };
 
@@ -34,7 +34,7 @@ namespace Log
         inline void LogDebug(const std::string& msg) { Log(msg, Verbosity::DEBUG); }
         inline void LogInfo(const std::string& msg) { Log(msg, Verbosity::INFO); };
         inline void LogWarning(const std::string& msg) { Log(msg, Verbosity::WARNING); };
-        inline void LogError(const std::string& msg) { Log(msg, Verbosity::ERROR); };
+        inline void LogError(const std::string& msg) { Log(msg, Verbosity::VERBOSITY_ERROR); };
         inline void LogCritical(const std::string& msg) { Log(msg, Verbosity::CRITICAL); };
 
     private:
@@ -48,7 +48,7 @@ namespace Log
         virtual void DoFlush() {};
 
         std::string formatStr_ = "[%d]%t: %m";
-        Verbosity verbosity_ = Verbosity::ERROR;
+        Verbosity verbosity_ = Verbosity::VERBOSITY_ERROR;
         static const std::unordered_map<Verbosity, std::string> typeString;
         bool active = true;
     };
